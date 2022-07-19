@@ -11,7 +11,7 @@ categoriesRoutes.post('/', (request: Request, response: Response) => {
 
   const category = new Category();
 
-  Object.assign(category, { name, description, created_at: new Date() }); // assign recebe um objeto de primeiro parametro e de segundo, os atributos que ele precisará passar para dentro do objeto item a item
+  Object.assign(category, { name, description, created_at: new Date() }); // Object.assign recebe um objeto de primeiro parametro e de segundo, os atributos que ele precisará passar para dentro do objeto item a item
 
   categories.push(category);
 
