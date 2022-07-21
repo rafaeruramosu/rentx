@@ -1,4 +1,4 @@
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
 
 interface IRequest {
   name: string;
@@ -6,7 +6,7 @@ interface IRequest {
 }
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: CategoriesRepository) {} // D => DIP - Dependency Inversion Principle (Princípio da Inversão de Dependência) *SOLID*
+  constructor(private categoriesRepository: ICategoriesRepository) {} // D => DIP - Dependency Inversion Principle (Princípio da Inversão de Dependência) *SOLID*
 
   execute({ name, description }: IRequest): void {
     const categoryAlreadyExists = this.categoriesRepository.findByName(name);

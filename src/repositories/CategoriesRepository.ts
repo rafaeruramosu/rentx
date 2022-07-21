@@ -1,17 +1,24 @@
 import { Category } from '../model/Category';
+import {
+  ICategoriesRepository,
+  ICreateCategoryDTO,
+} from './ICategoriesRepository';
 
-// DTO -> Data transfer object -> objeto responsável por pegar as informações recebidas pelas rotas e transferir para os repositórios
-interface ICreateCategoryDTO {
-  // 'I' -> interface | 'Create' -> oque a interface fará | 'Category' -> recurso | 'DTO' -> indica que será um objeto DTO
-  name: string;
-  description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
     this.categories = [];
+  }
+
+  findByName(name: string): Category {
+    const category = this.categories.find(category => category.name === name);
+
+    return category;
+  }
+
+  list(): Category[] {
+    return this.categories;
   }
 
   create({ name, description }: ICreateCategoryDTO): void {
@@ -20,16 +27,6 @@ class CategoriesRepository {
     Object.assign(category, { name, description, created_at: new Date() }); // Object.assign recebe um objeto de primeiro parametro e de segundo, os atributos que ele precisará passar para dentro do objeto item a item
 
     this.categories.push(category);
-  }
-
-  list(): Category[] {
-    return this.categories;
-  }
-
-  findByName(name: string): Category {
-    const category = this.categories.find(category => category.name === name);
-
-    return category;
   }
 }
 
