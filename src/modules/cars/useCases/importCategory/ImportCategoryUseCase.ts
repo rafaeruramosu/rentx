@@ -29,6 +29,8 @@ class ImportCategoryUserCase {
           categories.push({ name, description });
         })
         .on('end', () => {
+          fs.promises.unlink(file.path); // responsável por fazer a remoção de um arquivo da aplicação
+
           resolve(categories);
         })
         .on('error', err => {
