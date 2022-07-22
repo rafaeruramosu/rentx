@@ -40,6 +40,7 @@ class ImportCategoryUserCase {
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
+    // precisa ser assíncrono para conseguir percorrer o array
     categories.map(async category => {
       const { name, description } = category;
 
