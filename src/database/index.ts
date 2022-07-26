@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 
+import { Category } from '../modules/cars/entities/Category';
 import { CreateCategories1658862631345 } from './migrations/1658862631345-CreateCategories';
 
 const dataSource = new DataSource({
@@ -8,6 +9,7 @@ const dataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentx',
+  entities: [Category],
   migrations: [CreateCategories1658862631345],
 });
 
