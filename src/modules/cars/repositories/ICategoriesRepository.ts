@@ -1,4 +1,4 @@
-import { Category } from '../model/Category';
+import { Category } from '../entities/Category';
 
 // DTO -> Data transfer object -> objeto responsável por pegar as informações recebidas pelas rotas e transferir para os repositórios
 interface ICreateCategoryDTO {
