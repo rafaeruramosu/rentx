@@ -1,13 +1,18 @@
-import { createConnection, getConnectionOptions } from 'typeorm';
+import { DataSource } from 'typeorm';
 
-interface IOptions {
-  host: string;
+import { CreateCategories1658862631345 } from './migrations/1658862631345-CreateCategories';
+
+const dataSource = new DataSource({
+  type: 'postgres',
+  port: 5432,
+  username: 'docker',
+  password: 'ignite',
+  database: 'rentx',
+  migrations: [CreateCategories1658862631345],
+});
+
+export function createConnection(host = 'database'): Promise<DataSource> {
+  return dataSource.setOptions({ host }).initialize();
 }
 
-getConnectionOptions().then(options => {
-  const newOptions = options as IOptions;
-  newOptions.host = 'database'; // mesmo nome dado ao service do banco de dados no docker-compose
-  createConnection({
-    ...options,
-  });
-});
+export default dataSource;
