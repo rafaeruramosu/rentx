@@ -6,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then(options => {
   const newOptions = options as IOptions;
-  newOptions.host = 'database'; // mesmo o nome dado ao service do banco de dados no docker-compose
+  newOptions.host = 'database'; // mesmo nome dado ao service do banco de dados no docker-compose
   createConnection({
     ...options,
   });
