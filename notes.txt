@@ -1,0 +1,23 @@
+# problemas comuns com docker no windows:
+
+- ao instalar alguma dependencia
+  encerrar os containers do docker com o comando 'docker-compose stop'
+  apos concluir a instalacao, iniciar novamente com 'docker-compose start'
+
+- reload automatico do docker-compose nao funcionando
+  derrubar os containers do docker com o comando 'docker-compose down'
+  adicionar a flag '--poll' no script de dev no package.json
+  montar os containers novamente com 'docker-compose up'
+
+
+  # observacoes importantes
+
+  - sempre que alterar algo nos arquivos:
+      'docker-compose.yml'
+      'Dockerfile'
+      'package.json'
+    primeiro encerre os containers do docker com o comando 'docker-compose stop'
+    e depois inicie novamente com 'docker-compose start'
+    caso aconteca algum erro/problema
+    derrubar os containers do docker com o comando 'docker-compose down'
+    e montar os containers novamente com 'docker-compose up'
