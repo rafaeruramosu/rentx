@@ -4,13 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 @Entity('users')
 class User {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
   @Column()
   name: string;
-
-  @Column()
-  username: string;
 
   @Column()
   password: string;

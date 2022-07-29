@@ -6,6 +6,7 @@ import { Specification } from '../modules/cars/entities/Specification';
 import { CreateCategories1658862631345 } from './migrations/1658862631345-CreateCategories';
 import { CreateSpecifications1659117982083 } from './migrations/1659117982083-CreateSpecifications';
 import { CreateUsers1659120825949 } from './migrations/1659120825949-CreateUsers';
+import { AlterUserDeleteUsername1659123687178 } from './migrations/1659123687178-AlterUserDeleteUsername';
 
 const dataSource = new DataSource({
   type: 'postgres',
@@ -18,6 +19,7 @@ const dataSource = new DataSource({
     CreateCategories1658862631345,
     CreateSpecifications1659117982083,
     CreateUsers1659120825949,
+    AlterUserDeleteUsername1659123687178,
   ],
 });
 
