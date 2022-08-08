@@ -3,8 +3,8 @@ import { AppError } from '@shared/errors/AppError';
 
 import { CreateCarUseCase } from './CreateCarUseCase';
 
-let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
+let createCarUseCase: CreateCarUseCase;
 
 describe('Create car', () => {
   beforeEach(() => {
