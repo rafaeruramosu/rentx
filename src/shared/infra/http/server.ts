@@ -35,4 +35,4 @@ app.use(
   },
 );
 
-app.listen(3333, () => console.log('server is running'));
+app.listen(3333, () => console.log('[APP] server is running'));
