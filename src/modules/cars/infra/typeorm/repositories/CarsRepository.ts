@@ -12,6 +12,13 @@ class CarsRepository implements ICarsRepository {
   constructor() {
     this.repository = dataSource.getRepository(Car);
   }
+
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = await this.repository.findOneBy({ license_plate });
+
+    return car;
+  }
+
   async findAvailable(
     brand?: string,
     name?: string,
@@ -36,12 +43,6 @@ class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany();
 
     return cars;
-  }
-
-  async findByLicensePlate(license_plate: string): Promise<Car> {
-    const car = await this.repository.findOneBy({ license_plate });
-
-    return car;
   }
 
   async create({

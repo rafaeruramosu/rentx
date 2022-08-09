@@ -6,6 +6,18 @@ import { ICarsRepository } from '../ICarsRepository';
 class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = [];
 
+  async findById(id: string): Promise<Car> {
+    const car = this.cars.find(c => c.id === id);
+
+    return car;
+  }
+
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = this.cars.find(c => c.license_plate === license_plate);
+
+    return car;
+  }
+
   async findAvailable(
     brand?: string,
     name?: string,
@@ -25,12 +37,6 @@ class CarsRepositoryInMemory implements ICarsRepository {
     });
 
     return cars;
-  }
-
-  async findByLicensePlate(license_plate: string): Promise<Car> {
-    const car = this.cars.find(c => c.license_plate === license_plate);
-
-    return car;
   }
 
   async create({
