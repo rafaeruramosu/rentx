@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
+import { CarImage } from '@modules/cars/infra/typeorm/entities/CarImage';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
 
@@ -12,6 +13,7 @@ import { AlterUserDeleteUsername1659123687178 } from './migrations/1659123687178
 import { AlterUserAddAvatar1659192192682 } from './migrations/1659192192682-AlterUserAddAvatar';
 import { CreateCars1659985945421 } from './migrations/1659985945421-CreateCars';
 import { CreateSpecificationsCars1660061797866 } from './migrations/1660061797866-CreateSpecificationsCars';
+import { CreateCarImages1660066326667 } from './migrations/1660066326667-CreateCarImages';
 
 const dataSource = new DataSource({
   type: 'postgres',
@@ -19,7 +21,7 @@ const dataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentx',
-  entities: [Category, Specification, User, Car],
+  entities: [Category, Specification, User, Car, CarImage],
   migrations: [
     CreateCategories1658862631345,
     CreateSpecifications1659117982083,
@@ -28,6 +30,7 @@ const dataSource = new DataSource({
     AlterUserAddAvatar1659192192682,
     CreateCars1659985945421,
     CreateSpecificationsCars1660061797866,
+    CreateCarImages1660066326667,
   ],
 });
 
