@@ -31,12 +31,22 @@ describe('Create car specification', () => {
 
     const carCreated = await carsRepositoryInMemory.create(car);
 
-    const specifications_id = ['1234', '5678'];
+    const specification = {
+      name: 'Specification test',
+      description: 'Specification description test',
+    };
 
-    await createCarSpecificationUseCase.execute({
+    const specificationCreated = await specificationsRepositoryInMemory.create(
+      specification,
+    );
+
+    const specificationsCars = await createCarSpecificationUseCase.execute({
       car_id: carCreated.id,
-      specifications_id,
+      specifications_id: [specificationCreated.id],
     });
+
+    expect(specificationsCars).toHaveProperty('specifications');
+    expect(specificationsCars.specifications.length).toBe(1);
   });
 
   it('should not be able to add a new specification to a nonexistent car', async () => {
