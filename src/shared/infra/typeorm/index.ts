@@ -5,6 +5,7 @@ import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { CarImage } from '@modules/cars/infra/typeorm/entities/CarImage';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
+import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 
 import { CreateCategories1658862631345 } from './migrations/1658862631345-CreateCategories';
 import { CreateSpecifications1659117982083 } from './migrations/1659117982083-CreateSpecifications';
@@ -22,7 +23,7 @@ const dataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentx',
-  entities: [Category, Specification, User, Car, CarImage],
+  entities: [Category, Specification, User, Car, CarImage, Rental],
   migrations: [
     CreateCategories1658862631345,
     CreateSpecifications1659117982083,
