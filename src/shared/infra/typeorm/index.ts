@@ -22,7 +22,7 @@ const dataSource = new DataSource({
   port: 5432,
   username: 'docker',
   password: 'ignite',
-  database: 'rentx',
+  database: process.env.NODE_ENV === 'test' ? 'rentx_test' : 'rentx',
   entities: [Category, Specification, User, Car, CarImage, Rental],
   migrations: [
     CreateCategories1658862631345,
