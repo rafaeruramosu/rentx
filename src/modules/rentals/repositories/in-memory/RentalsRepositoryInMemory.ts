@@ -6,6 +6,12 @@ import { IRentalsRepository } from '../IRentalsRepository';
 class RentalsRepositoryInMemory implements IRentalsRepository {
   rentals: Rental[] = [];
 
+  async findById(id: string): Promise<Rental> {
+    const rental = this.rentals.find(r => r.id === id);
+
+    return rental;
+  }
+
   async findOpenRentalByUserId(user_id: string): Promise<Rental> {
     const rental = this.rentals.find(r => r.user_id === user_id && !r.end_date);
 
