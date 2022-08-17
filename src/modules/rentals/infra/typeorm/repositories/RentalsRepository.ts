@@ -2,7 +2,7 @@ import { IsNull, Repository } from 'typeorm';
 
 import { ICreateRentalDTO } from '@modules/rentals/dtos/ICreateRentalDTO';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
-import dataSource from '@shared/infra/typeorm';
+import { dataSource } from '@shared/infra/typeorm';
 
 import { Rental } from '../entities/Rental';
 

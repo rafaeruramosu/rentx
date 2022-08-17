@@ -54,7 +54,7 @@ describe('Create car specification', () => {
     const specifications_id = ['1234', '5678'];
 
     await expect(
-      await createCarSpecificationUseCase.execute({
+      createCarSpecificationUseCase.execute({
         car_id,
         specifications_id,
       }),

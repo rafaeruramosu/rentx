@@ -17,12 +17,15 @@ import { CreateSpecificationsCars1660061797866 } from './migrations/166006179786
 import { CreateCarImages1660066326667 } from './migrations/1660066326667-CreateCarImages';
 import { CreateRentals1660239155769 } from './migrations/1660239155769-CreateRentals';
 
-const dataSource = new DataSource({
+export const dataSource = new DataSource({
   type: 'postgres',
+  host: 'localhost',
   port: 5432,
   username: 'docker',
   password: 'ignite',
   database: process.env.NODE_ENV === 'test' ? 'rentx_test' : 'rentx',
+  synchronize: false,
+  logging: false,
   entities: [Category, Specification, User, Car, CarImage, Rental],
   migrations: [
     CreateCategories1658862631345,
@@ -35,10 +38,11 @@ const dataSource = new DataSource({
     CreateCarImages1660066326667,
     CreateRentals1660239155769,
   ],
+  subscribers: [],
 });
 
-export function createConnection(host = 'database'): Promise<DataSource> {
+export function createConnection(
+  host = process.env.NODE_ENV === 'test' ? 'localhost' : 'database',
+): Promise<DataSource> {
   return dataSource.setOptions({ host }).initialize();
 }
-
-export default dataSource;

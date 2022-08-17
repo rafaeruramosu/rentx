@@ -4,7 +4,7 @@ import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from '@modules/cars/repositories/ICategoriesRepository';
-import dataSource from '@shared/infra/typeorm';
+import { dataSource } from '@shared/infra/typeorm';
 
 import { Category } from '../entities/Category';
 

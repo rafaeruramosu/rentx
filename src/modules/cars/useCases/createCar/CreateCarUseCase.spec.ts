@@ -41,7 +41,7 @@ describe('Create car', () => {
 
     await createCarUseCase.execute(car);
 
-    await expect(await createCarUseCase.execute(car)).rejects.toEqual(
+    await expect(createCarUseCase.execute(car)).rejects.toEqual(
       new AppError('Car already exists.'),
     );
   });

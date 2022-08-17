@@ -52,21 +52,9 @@ describe('Create rental', () => {
   });
 
   it('should not be able to create a rental if there is another open rental for the same user', async () => {
-    const car = {
-      name: 'Car test',
-      description: 'Car description test',
-      daily_rate: 100,
-      license_plate: 'ABC-4321',
-      fine_amount: 60,
-      brand: 'Car brand test',
-      category_id: 'category',
-    };
-
-    const carCreated = await carsRepositoryInMemory.create(car);
-
     const rental1 = {
       user_id: '12345',
-      car_id: carCreated.id,
+      car_id: '12345',
       expected_return_date: dayAdd24Hours,
     };
 
@@ -74,7 +62,7 @@ describe('Create rental', () => {
 
     const rental2 = {
       user_id: '12345',
-      car_id: carCreated.id,
+      car_id: '54321',
       expected_return_date: dayAdd24Hours,
     };
 
@@ -84,21 +72,9 @@ describe('Create rental', () => {
   });
 
   it('should not be able to create a rental if there is another open rental for the same car', async () => {
-    const car = {
-      name: 'Car test',
-      description: 'Car description test',
-      daily_rate: 100,
-      license_plate: 'ABC-1243',
-      fine_amount: 60,
-      brand: 'Car brand test',
-      category_id: 'category',
-    };
-
-    const carCreated = await carsRepositoryInMemory.create(car);
-
     const rental1 = {
       user_id: '12345',
-      car_id: carCreated.id,
+      car_id: '12345',
       expected_return_date: dayAdd24Hours,
     };
 
@@ -106,7 +82,7 @@ describe('Create rental', () => {
 
     const rental2 = {
       user_id: '54321',
-      car_id: carCreated.id,
+      car_id: '12345',
       expected_return_date: dayAdd24Hours,
     };
 
