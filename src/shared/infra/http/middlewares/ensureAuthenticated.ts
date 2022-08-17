@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
+import { auth } from '@config/auth';
 import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
 import { AppError } from '@shared/errors/AppError';
 
@@ -25,10 +26,7 @@ export async function ensureAuthenticated(
   const [, token] = authHeader.split(' '); // antes da virgula seria a posicao 0 do array, porem nao precisamos dela entao se faz dessa forma
 
   try {
-    const { sub: user_id } = verify(
-      token,
-      '830c993a7107e4ef4617d958dd666b49',
-    ) as IPayload;
+    const { sub: user_id } = verify(token, auth.secret_token) as IPayload;
 
     const usersRepository = new UsersRepository();
 
