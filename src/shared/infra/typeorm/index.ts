@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { UsersTokens } from '@modules/accounts/infra/typeorm/entities/UsersTokens';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { CarImage } from '@modules/cars/infra/typeorm/entities/CarImage';
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
@@ -16,7 +17,7 @@ import { CreateCars1659985945421 } from './migrations/1659985945421-CreateCars';
 import { CreateSpecificationsCars1660061797866 } from './migrations/1660061797866-CreateSpecificationsCars';
 import { CreateCarImages1660066326667 } from './migrations/1660066326667-CreateCarImages';
 import { CreateRentals1660239155769 } from './migrations/1660239155769-CreateRentals';
-import { CreateUsersToken1660769637135 } from './migrations/1660769637135-CreateUsersToken';
+import { CreateUsersTokens1660769637135 } from './migrations/1660769637135-CreateUsersTokens';
 
 export const dataSource = new DataSource({
   type: 'postgres',
@@ -27,7 +28,7 @@ export const dataSource = new DataSource({
   database: process.env.NODE_ENV === 'test' ? 'rentx_test' : 'rentx',
   synchronize: false,
   logging: false,
-  entities: [Category, Specification, User, Car, CarImage, Rental],
+  entities: [Category, Specification, User, Car, CarImage, Rental, UsersTokens],
   migrations: [
     CreateCategories1658862631345,
     CreateSpecifications1659117982083,
@@ -38,7 +39,7 @@ export const dataSource = new DataSource({
     CreateSpecificationsCars1660061797866,
     CreateCarImages1660066326667,
     CreateRentals1660239155769,
-    CreateUsersToken1660769637135,
+    CreateUsersTokens1660769637135,
   ],
   subscribers: [],
 });
