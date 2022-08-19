@@ -6,6 +6,7 @@ interface IUsersTokensRepository {
     user_id: string,
     refresh_token: string,
   ): Promise<UsersTokens>;
+  findByRefreshToken(refresh_token: string): Promise<UsersTokens>;
   create({
     user_id,
     expires_date,

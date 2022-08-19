@@ -25,6 +25,12 @@ class UsersTokensRepository implements IUsersTokensRepository {
     return userToken;
   }
 
+  async findByRefreshToken(refresh_token: string): Promise<UsersTokens> {
+    const userToken = await this.repository.findOneBy({ refresh_token });
+
+    return userToken;
+  }
+
   async create({
     user_id,
     expires_date,
