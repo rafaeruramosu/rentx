@@ -1,5 +1,5 @@
 node_modules
 coverage
-.env.local
+.env
 tmp/*
 !tmp/.gitkeep
