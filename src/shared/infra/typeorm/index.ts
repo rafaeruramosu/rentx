@@ -22,7 +22,7 @@ import { CreateUsersTokens1660769637135 } from './migrations/1660769637135-Creat
 export const dataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
-  port: 5432,
+  port: 52607,
   username: 'docker',
   password: 'ignite',
   database: process.env.NODE_ENV === 'test' ? 'rentx_test' : 'rentx',
