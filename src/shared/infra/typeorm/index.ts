@@ -44,8 +44,12 @@ export const dataSource = new DataSource({
   subscribers: [],
 });
 
-export function createConnection(
-  host = process.env.NODE_ENV === 'test' ? 'localhost' : 'database',
-): Promise<DataSource> {
-  return dataSource.setOptions({ host }).initialize();
+// export function createConnection(
+//   host = process.env.NODE_ENV === 'test' ? 'localhost' : 'database',
+// ): Promise<DataSource> {
+//   return dataSource.setOptions({ host }).initialize();
+// }
+
+export function createConnection(): Promise<DataSource> {
+  return dataSource.initialize();
 }
